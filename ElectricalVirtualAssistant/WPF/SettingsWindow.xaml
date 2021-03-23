@@ -1,0 +1,70 @@
+﻿<Window x:Class="EVA_S.WPF.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EVA_S.WPF"
+        xmlns:vm="clr-namespace:EVA_S.WPF"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Settings" Height="400" Width="650">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <!--<Button  Grid.Column="0" Grid.Row="0"  Height="20"  Margin="15,5,5,5" Content="Выбрать все" Command="{Binding btnSelectAll_Click}"/>-->
+        <TextBlock  
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="4"
+            TextAlignment ="Left"
+            TextWrapping="Wrap"
+            Margin="30,15,30,15">
+            Ниже представлена таблица с именами параметров с которыми работает приложение EVA.
+            Если в вашей моделе у семейств уже есть аналогичные параметры отвечающие за то же самое, Вы можете изменить имена
+            в этой таблице. Тогда программа будет работать с ними
+        </TextBlock>
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+            <TextBlock Margin="10,0,0,0" FontWeight="Bold" > Имя параметра:</TextBlock>
+            <TextBox  Margin="10,10,10,15" Height="20" Text="{Binding ParamCircuitsNames}"></TextBox>
+            <TextBox  Margin="10,0,10,15" Height="20" Text="{Binding ParamCircName}"></TextBox>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2">
+            <TextBlock  Margin="5,0,0,0" FontWeight="Bold"> Описание параметра:</TextBlock>
+            <TextBlock  Margin="5,10,5,15" Height="20"> Параметр отвечающий за название кабельных линий при групп. прокладке</TextBlock>
+            <TextBlock  Margin="5,0,5,15" Height="20"> Параметр отвечающий за название кабельных линий </TextBlock>
+        </StackPanel>
+
+        <Button Grid.Row="3"
+        Grid.Column="0"                   
+        Height="30" 
+        VerticalAlignment="Bottom"
+        Margin="10,10,0,10"
+        Command="{Binding Accept}" 
+        Content="OK"/>
+        
+        <Button Grid.Row="3"
+                Grid.Column="1" 
+                Grid.ColumnSpan="2"
+                Height="30"
+                Margin="15" 
+                Command="{Binding DefaultValue}"
+                Content="Выставить имена параметров по умолчанию" />
+        <Button Grid.Row="3"
+                Grid.Column="3" 
+                Height="30" 
+                VerticalAlignment="Bottom"
+                Margin="0,10,10,10" 
+                Command="{Binding Cancel}" 
+                Content="Cancel"/>
+
+    </Grid>
+</Window>
