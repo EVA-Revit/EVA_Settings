@@ -52,17 +52,12 @@ namespace EVA_S
 
             if(paramSettings == null)
             {
-
-
-
-
-
                 paramSettings = new ParametersNameEntity();
                 paramSettings.Param_CircName = "Имя_цепи_EVA";
-                paramSettings.Param_CircuitsNames = "Комметарии";
+                paramSettings.Param_CircuitsNames = "Группа_имен_цепей_EVA";
             }
             if (paramSettings.Param_CircName == "") paramSettings.Param_CircName = "Имя_цепи_EVA";
-            if (paramSettings.Param_CircuitsNames == "") paramSettings.Param_CircuitsNames = "Комметарии";
+            if (paramSettings.Param_CircuitsNames == "") paramSettings.Param_CircuitsNames = "Группа_имен_цепей_EVA";
 
             var viewModel = new WPF.MainViewModel(paramSettings);
             var view = new WPF.SettingsWindow();
@@ -89,7 +84,6 @@ namespace EVA_S
         public static Element GetStorageElement()
         {
             ProjectInfo pi = doc.ProjectInformation;
-            //Element el = doc.GetElement(new ElementId(964242));
             return pi as Element;
         }
     }

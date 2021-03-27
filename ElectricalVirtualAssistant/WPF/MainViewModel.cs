@@ -91,7 +91,7 @@ namespace EVA_S.WPF
         private void DefaultValueCommand(object obj)
         {
             ParamCircName = "Имя_цепи_EVA";
-            ParamCircuitsNames = "Комментарии";
+            ParamCircuitsNames = "Группа_имен_цепей_EVA";
             
         }
 
