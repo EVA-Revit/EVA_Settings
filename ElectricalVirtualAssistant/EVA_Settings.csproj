@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Command.cs" />
+    <Compile Include="CreateSharedParameters.cs" />
     <Compile Include="ExtensibleStorageExtension\AttributeExtractor.cs" />
     <Compile Include="ExtensibleStorageExtension\Attributes\FieldAttribute.cs" />
     <Compile Include="ExtensibleStorageExtension\Attributes\SchemaAttribute.cs" />

@@ -60,12 +60,23 @@ namespace EVA_S.WPF
 
         public ParametersNameEntity Ent { get; set; }
 
+        private bool _isLoadSharedParameters;
+        public bool IsLoadSharedParameters
+        {
+            get { return _isLoadSharedParameters; }
+            set { _isLoadSharedParameters = value; }
+        }
+        
+
+
+
         //Конструктор
         public MainViewModel(ParametersNameEntity ent)
         {
             Accept = new RelayCommand(o => OkCommand(o)); //проброс команды
             Cancel = new RelayCommand(o => CancelCommand(o));
             DefaultValue = new RelayCommand(o => DefaultValueCommand(o));
+            LoadDefaultParameters = new RelayCommand(o => LoadDefaultParametersCommand(o));
             _paramCircName = ent.Param_CircName;
             _paramCircuitsNames = ent.Param_CircuitsNames;
            Ent = ent;
@@ -75,12 +86,26 @@ namespace EVA_S.WPF
         public ICommand Accept { get; }
         public ICommand Cancel { get; }
         public ICommand DefaultValue { get; }
+        public ICommand LoadDefaultParameters { get; }
+
+        //активность кнопки
+        //private bool CanCmdExecLoadParameters(object obj)
+        //{
+        //    if (ParamCircName == "Имя_цепи_EVA" &&
+        //    ParamCircuitsNames == "Группа_имен_цепей_EVA")
+        //    {
+        //        return true;
+        //    }
+        //    return false;
+        //}
+
 
         //делигаты команд
         private void OkCommand(object obj)
         {
             Ent.Param_CircName = ParamCircName;
             Ent.Param_CircuitsNames = ParamCircuitsNames;
+            _windowView.DialogResult = true;
             _windowView.Close();
 
         }
@@ -93,6 +118,10 @@ namespace EVA_S.WPF
             ParamCircName = "Имя_цепи_EVA";
             ParamCircuitsNames = "Группа_имен_цепей_EVA";
             
+        }
+        private void LoadDefaultParametersCommand(object obj)
+        {
+            _isLoadSharedParameters = true;
         }
 
         //ParamCircName

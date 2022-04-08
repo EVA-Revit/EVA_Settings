@@ -9,6 +9,7 @@ using Autodesk.Revit.UI.Selection;
 using Autodesk.Revit.DB.Electrical;
 using Autodesk.Revit.DB.ExtensibleStorage;
 using EVA_S.ExtensibleStorageExtension.ElementExtension;
+using Autodesk.Revit.ApplicationServices;
 
 
 namespace EVA_S
@@ -18,11 +19,16 @@ namespace EVA_S
         public static Document doc { get; set; }
         //private static UIDocument uidoc;
         public static UIDocument uidoc { get; private set; }
+        public static UIApplication uiApp { get; private set; }
+        public static Application app { get; private set; }
+
         public static Result ResultCode(ExternalCommandData commandData, ref string message)
         {
             try
             {
-                uidoc = commandData.Application.ActiveUIDocument;
+                uiApp = commandData.Application;
+                uidoc = uiApp.ActiveUIDocument;
+                app = uiApp.Application;
                 doc = uidoc.Document;
                 //Здесь пишется код или метод boolean
                 if (!SettingsMetod())
@@ -64,16 +70,15 @@ namespace EVA_S
             viewModel.WindowView = view;
             view.DataContext = viewModel;
             view.ShowDialog();
-
+            if(view.DialogResult == false) return false;
             using (Transaction newTran = new Transaction(doc, "Запись параметров"))
             {
                 newTran.Start();
-        
                 el.SetEntity(viewModel.Ent);
                 newTran.Commit();
-                
             }
-
+            if (viewModel.IsLoadSharedParameters) CreateSharedParameters.CreateSharedParameter(doc, app);
+           
             return true;
         }
 
