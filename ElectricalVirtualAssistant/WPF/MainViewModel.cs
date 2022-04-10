@@ -66,8 +66,27 @@ namespace EVA_S.WPF
             get { return _isLoadSharedParameters; }
             set { _isLoadSharedParameters = value; }
         }
-        
 
+        private bool _isLoadFamelesEVAex;
+        public bool IsLoadFamelesEVAex
+        {
+            get { return _isLoadFamelesEVAex; }
+            set { _isLoadFamelesEVAex = value; }
+        }
+
+        private bool _isLoadFamelesEVAstreams;
+        public bool IsLoadFamelesEVAstreams
+        {
+            get { return _isLoadFamelesEVAstreams; }
+            set { _isLoadFamelesEVAstreams = value; }
+        }
+
+        private bool _isLoadFamelesEVAcirc;
+        public bool IsLoadFamelesEVAcirc
+        {
+            get { return _isLoadFamelesEVAcirc; }
+            set { _isLoadFamelesEVAcirc = value; }
+        }
 
 
         //Конструктор
@@ -79,7 +98,7 @@ namespace EVA_S.WPF
             LoadDefaultParameters = new RelayCommand(o => LoadDefaultParametersCommand(o));
             _paramCircName = ent.Param_CircName;
             _paramCircuitsNames = ent.Param_CircuitsNames;
-           Ent = ent;
+            Ent = ent;
         }
 
         //Команды к которым привязываеться view
@@ -87,6 +106,9 @@ namespace EVA_S.WPF
         public ICommand Cancel { get; }
         public ICommand DefaultValue { get; }
         public ICommand LoadDefaultParameters { get; }
+
+
+
 
         //активность кнопки
         //private bool CanCmdExecLoadParameters(object obj)
@@ -124,6 +146,5 @@ namespace EVA_S.WPF
             _isLoadSharedParameters = true;
         }
 
-        //ParamCircName
     }
 }

@@ -70,7 +70,7 @@ namespace EVA_S
             viewModel.WindowView = view;
             view.DataContext = viewModel;
             view.ShowDialog();
-            if(view.DialogResult == false) return false;
+            if (view.DialogResult == false) return false;
             using (Transaction newTran = new Transaction(doc, "Запись параметров"))
             {
                 newTran.Start();
@@ -78,7 +78,13 @@ namespace EVA_S
                 newTran.Commit();
             }
             if (viewModel.IsLoadSharedParameters) CreateSharedParameters.CreateSharedParameter(doc, app);
-           
+
+
+
+            if (viewModel.IsLoadFamelesEVAex) LoaderFamilys.LoadFamilys();
+
+
+
             return true;
         }
 

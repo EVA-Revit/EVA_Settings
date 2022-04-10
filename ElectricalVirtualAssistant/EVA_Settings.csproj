@@ -65,6 +65,8 @@
     <Compile Include="ExtensibleStorageExtension\IRevitEntity.cs" />
     <Compile Include="ExtensibleStorageExtension\ISchemaCreator.cs" />
     <Compile Include="ExtensibleStorageExtension\SchemaCreator.cs" />
+    <Compile Include="ExternalEventHendler\ExEvLoadFamily.cs" />
+    <Compile Include="LoaderFamilys.cs" />
     <Compile Include="RevitEntity.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
