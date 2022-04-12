@@ -62,8 +62,8 @@ namespace EVA_S
                 {
                     if (dg.Name == "EVA")
                     {
-                        ExternalDefinition externalDefinitionNameCirc = dg.Definitions.get_Item("Имя_цепи_EVA") as ExternalDefinition;
-                        ExternalDefinition externalDefinitionNamesGroupCirc = dg.Definitions.get_Item("Группа_имен_цепей_EVA") as ExternalDefinition;
+                        ExternalDefinition externalDefinitionNameCirc = dg.Definitions.get_Item("EVA_Имя_цепи") as ExternalDefinition;
+                        ExternalDefinition externalDefinitionNamesGroupCirc = dg.Definitions.get_Item("EVA_Группа_имен_цепей") as ExternalDefinition;
 
                         using (Transaction transaction = new Transaction(doc))
                         {

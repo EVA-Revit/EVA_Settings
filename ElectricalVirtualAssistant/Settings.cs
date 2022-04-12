@@ -71,26 +71,28 @@ namespace EVA_S
             view.DataContext = viewModel;
             view.ShowDialog();
             if (view.DialogResult == false) return false;
-            using (Transaction newTran = new Transaction(doc, "Запись параметров"))
+            using (Transaction newTran = new Transaction(doc, "Запись имен параметров EVA"))
             {
                 newTran.Start();
                 el.SetEntity(viewModel.Ent);
                 newTran.Commit();
             }
+
             if (viewModel.IsLoadSharedParameters) CreateSharedParameters.CreateSharedParameter(doc, app);
 
+            string loadFamilysVariant = "";
+            if (viewModel.IsLoadFamelesEVAex) loadFamilysVariant = "ex";
+            if (viewModel.IsLoadFamelesEVAstreams) loadFamilysVariant = loadFamilysVariant + "streams";
+            if (viewModel.IsLoadFamelesEVAcirc) loadFamilysVariant = loadFamilysVariant + "circ";
 
-
-            if (viewModel.IsLoadFamelesEVAex) LoaderFamilys.LoadFamilys();
-
-
+            if (loadFamilysVariant != "") LoaderFamilys.LoadFamilys(loadFamilysVariant, doc);
 
             return true;
         }
 
 
 
-
+        
 
         public static Element GetStorageElement()
         {
