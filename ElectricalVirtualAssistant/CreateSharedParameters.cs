@@ -64,6 +64,9 @@ namespace EVA_S
                     {
                         ExternalDefinition externalDefinitionNameCirc = dg.Definitions.get_Item("EVA_Имя_цепи") as ExternalDefinition;
                         ExternalDefinition externalDefinitionNamesGroupCirc = dg.Definitions.get_Item("EVA_Группа_имен_цепей") as ExternalDefinition;
+                        ExternalDefinition externalDefinitionNamesLoad = dg.Definitions.get_Item("EVA_Имя_Нагрузки") as ExternalDefinition;
+                        ExternalDefinition externalDefinitionText = dg.Definitions.get_Item("EVA_Текст") as ExternalDefinition;
+                        ExternalDefinition externalDefinitionDouble = dg.Definitions.get_Item("EVA_Число") as ExternalDefinition;
 
                         using (Transaction transaction = new Transaction(doc))
                         {
@@ -72,7 +75,9 @@ namespace EVA_S
                             InstanceBinding binding = app.Create.NewInstanceBinding(categorySet);
                             doc.ParameterBindings.Insert(externalDefinitionNameCirc, binding, BuiltInParameterGroup.PG_TEXT);
                             doc.ParameterBindings.Insert(externalDefinitionNamesGroupCirc, binding, BuiltInParameterGroup.PG_TEXT);
-
+                            doc.ParameterBindings.Insert(externalDefinitionNamesLoad, binding, BuiltInParameterGroup.PG_TEXT);
+                            doc.ParameterBindings.Insert(externalDefinitionText, binding, BuiltInParameterGroup.PG_TEXT);
+                            doc.ParameterBindings.Insert(externalDefinitionDouble, binding, BuiltInParameterGroup.PG_TEXT);
                             transaction.Commit();
                         }
                     }
