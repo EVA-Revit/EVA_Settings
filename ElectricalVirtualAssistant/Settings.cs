@@ -12,6 +12,7 @@ using EVA_S.ExtensibleStorageExtension.ElementExtension;
 using Autodesk.Revit.ApplicationServices;
 
 
+
 namespace EVA_S
 {
     class Settings
@@ -51,19 +52,32 @@ namespace EVA_S
         /// <returns></returns>
         static Boolean SettingsMetod()
         {
+            string nameCirc = "EVA_Имя_цепи";
+            string groupNameCirc = "EVA_Группа_имен_цепей";
+            string nameLoad = "EVA_Имя_Нагрузки";
+            string evaText = "EVA_Текст";
+            string evaDouble = "EVA_Число";
+
+
 
             Element el = GetStorageElement();
-
+            //el.DeleteEntity<>
             var paramSettings = el.GetEntity<ParametersNameEntity>();
 
             if(paramSettings == null)
             {
                 paramSettings = new ParametersNameEntity();
-                paramSettings.Param_CircName = "Имя_цепи_EVA";
-                paramSettings.Param_CircuitsNames = "Группа_имен_цепей_EVA";
+                paramSettings.Param_CircName = nameCirc;
+                paramSettings.Param_CircuitsNames = groupNameCirc;
+                paramSettings.Param_LoadName = nameLoad;
+                paramSettings.Param_TextName = evaText;
+                paramSettings.Param_DoubleName = evaDouble;
             }
-            if (paramSettings.Param_CircName == "") paramSettings.Param_CircName = "Имя_цепи_EVA";
-            if (paramSettings.Param_CircuitsNames == "") paramSettings.Param_CircuitsNames = "Группа_имен_цепей_EVA";
+            if (paramSettings.Param_CircName == "") paramSettings.Param_CircName = nameCirc;
+            if (paramSettings.Param_CircuitsNames == "") paramSettings.Param_CircuitsNames = groupNameCirc;
+            if (paramSettings.Param_LoadName == "") paramSettings.Param_LoadName = nameLoad;
+            if (paramSettings.Param_TextName == "") paramSettings.Param_TextName = evaText;
+            if (paramSettings.Param_DoubleName == "") paramSettings.Param_DoubleName = evaDouble;
 
             var viewModel = new WPF.MainViewModel(paramSettings);
             var view = new WPF.SettingsWindow();
@@ -74,7 +88,17 @@ namespace EVA_S
             using (Transaction newTran = new Transaction(doc, "Запись имен параметров EVA"))
             {
                 newTran.Start();
-                el.SetEntity(viewModel.Ent);
+                try
+                {
+                    el.SetEntity(viewModel.Ent);
+                }
+                catch
+                {
+                    el.DeleteEntity<ParametersNameEntity>();
+                    //Schema sr = new Schema();
+                    //el.SetEntity(viewModel.Ent);
+                }
+                
                 newTran.Commit();
             }
 
@@ -86,6 +110,11 @@ namespace EVA_S
             if (viewModel.IsLoadFamelesEVAcirc) loadFamilysVariant = loadFamilysVariant + "circ";
 
             if (loadFamilysVariant != "") LoaderFamilys.LoadFamilys(loadFamilysVariant, doc);
+
+
+
+
+
 
             return true;
         }

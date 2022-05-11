@@ -22,6 +22,7 @@
                         <RowDefinition></RowDefinition>
                         <RowDefinition Height="25"></RowDefinition>
                         <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="100"></ColumnDefinition>
@@ -45,13 +46,24 @@
                         <TextBlock Margin="10,0,0,0" FontWeight="Bold" > Имя параметра:</TextBlock>
                         <TextBox  Margin="10,10,10,15" Height="20" Text="{Binding ParamCircuitsNames}"></TextBox>
                         <TextBox  Margin="10,0,10,15" Height="20" Text="{Binding ParamCircName}"></TextBox>
-                        
+                        <TextBox  Margin="10,0,10,15" Height="20" Text="{Binding ParamLoadName}"></TextBox>
+                        <TextBox  Margin="10,0,10,15" Height="20" Text="{Binding ParamTextName}"></TextBox>
+                        <TextBox  Margin="10,0,10,15" Height="20" Text="{Binding ParamDoubleName}"></TextBox>
                     </StackPanel>
                     <StackPanel Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2">
                         <TextBlock  Margin="5,0,0,0" FontWeight="Bold"> Описание параметра:</TextBlock>
                         <TextBlock  Margin="5,10,5,15" Height="20"> Параметр отвечающий за название кабельных линий при групп. прокладке</TextBlock>
-                        <TextBlock  Margin="5,0,5,15" Height="20"> Параметр отвечающий за название кабельных линий</TextBlock>
-                        
+                        <TextBlock  Margin="5,0,5,10" Height="20"> Параметр отвечающий за название кабельных линий</TextBlock>
+                        <TextBlock  Margin="5,0, 5, 0" Height="35" TextWrapping="Wrap"> 
+                            Текстовый параметр наименований потребителей, которые будут записываться в цепь через запятую
+                        </TextBlock>
+                        <TextBlock  Margin="5,0, 5, 0" Height="35" TextWrapping="Wrap"> 
+                            Текстовый параметр для ввода данных, которые будут записываться в цепь через запятую
+                        </TextBlock>
+                        <TextBlock  Margin="5,0, 5, 15" Height="35" TextWrapping="Wrap"> 
+                            Числовой параметр, который суммируется по всем потребителям в цепи, и сумма записывается в цепь
+                        </TextBlock>
+
                     </StackPanel>
 
                     <CheckBox Margin="30,2,30,2" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
@@ -70,9 +82,10 @@
                     Margin="30,5,30,5" 
                     Command="{Binding DefaultValue}"
                     Content="Выставить имена параметров по умолчанию" />
+                    
                 </Grid>
             </TabItem>
-            <TabItem Header="Семейства">
+            <!--<TabItem Header="Семейства">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"></RowDefinition>
@@ -114,7 +127,7 @@
                         </CheckBox>
                     </StackPanel>
                 </Grid>
-            </TabItem>
+            </TabItem>-->
             <TabItem Header="Коэффициенты">
             </TabItem>
         </TabControl>

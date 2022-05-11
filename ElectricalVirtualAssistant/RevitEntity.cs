@@ -6,7 +6,7 @@ using Autodesk.Revit.DB;
 
 namespace EVA_S
 {
-    [SchemaAttribute("98C5A291-D325-4DAA-B819-016C2BC2A927", "SetParameters", Documentation = "Класс для записи настроек")]
+    [SchemaAttribute("99C5A291-D325-4DAA-B819-016C2BC2A927", "SetParameters", Documentation = "Класс для записи настроек")]
     public class ParametersNameEntity : IRevitEntity
     {
         [FieldAttribute]
@@ -14,6 +14,15 @@ namespace EVA_S
 
         [FieldAttribute]
         public string Param_CircuitsNames { get; set; }
+
+        [FieldAttribute]
+        public string Param_LoadName { get; set; }
+
+        [FieldAttribute]
+        public string Param_TextName { get; set; }
+
+        [FieldAttribute]
+        public string Param_DoubleName { get; set; }
     }
 
 

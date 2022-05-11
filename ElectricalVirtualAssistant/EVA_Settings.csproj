@@ -66,6 +66,7 @@
     <Compile Include="ExtensibleStorageExtension\ISchemaCreator.cs" />
     <Compile Include="ExtensibleStorageExtension\SchemaCreator.cs" />
     <Compile Include="ExternalEventHendler\ExEvLoadFamily.cs" />
+    <Compile Include="INIManager.cs" />
     <Compile Include="LoaderFamilys.cs" />
     <Compile Include="RevitEntity.cs" />
     <Compile Include="Settings.cs" />

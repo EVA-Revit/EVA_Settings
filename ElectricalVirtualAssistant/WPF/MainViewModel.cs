@@ -50,6 +50,24 @@ namespace EVA_S.WPF
 
         }
 
+        string _paramLoadName;
+        public string ParamLoadName
+        {
+            get { return _paramLoadName; }
+            set => SetProperty(ref _paramLoadName, value); //переназначение текстбокса
+        }
+        string _paramTextName;
+        public string ParamTextName
+        {
+            get { return _paramTextName; }
+            set => SetProperty(ref _paramTextName, value); //переназначение текстбокса
+        }
+        string _paramDoubleName;
+        public string ParamDoubleName
+        {
+            get { return _paramDoubleName; }
+            set => SetProperty(ref _paramDoubleName, value); //переназначение текстбокса
+        }
 
         private Window _windowView;
         public Window WindowView
@@ -98,6 +116,9 @@ namespace EVA_S.WPF
             LoadDefaultParameters = new RelayCommand(o => LoadDefaultParametersCommand(o));
             _paramCircName = ent.Param_CircName;
             _paramCircuitsNames = ent.Param_CircuitsNames;
+            _paramLoadName = ent.Param_LoadName;
+            _paramTextName = ent.Param_TextName;
+            _paramDoubleName = ent.Param_DoubleName;
             Ent = ent;
         }
 
@@ -127,6 +148,10 @@ namespace EVA_S.WPF
         {
             Ent.Param_CircName = ParamCircName;
             Ent.Param_CircuitsNames = ParamCircuitsNames;
+            Ent.Param_LoadName = ParamLoadName;
+            Ent.Param_TextName = ParamTextName;
+            Ent.Param_DoubleName = ParamDoubleName;
+
             _windowView.DialogResult = true;
             _windowView.Close();
 
@@ -139,7 +164,10 @@ namespace EVA_S.WPF
         {
             ParamCircName = "EVA_Имя_цепи";
             ParamCircuitsNames = "EVA_Группа_имен_цепей";
-            
+            ParamLoadName = "EVA_Имя_Нагрузки";
+            ParamTextName = "EVA_Текст";
+            ParamDoubleName = "EVA_Число";
+
         }
         private void LoadDefaultParametersCommand(object obj)
         {
