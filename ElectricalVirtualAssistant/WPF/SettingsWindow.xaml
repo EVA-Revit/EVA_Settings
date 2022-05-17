@@ -82,7 +82,11 @@
                     Margin="30,5,30,5" 
                     Command="{Binding DefaultValue}"
                     Content="Выставить имена параметров по умолчанию" />
-                    
+                    <DockPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4">
+                        <TextBlock Margin="10,0,0,0" FontWeight="Bold" > Сохранить настройки:</TextBlock>
+                        <RadioButton Margin="10,3,0,0" GroupName="Storage" Content="для всех проектов" IsChecked="{Binding IsStorageInFile}" ></RadioButton>
+                        <RadioButton Margin="10,3,0,0" GroupName="Storage" Content="для этого проекта" IsChecked="{Binding IsStorageInProject}"></RadioButton>
+                    </DockPanel>
                 </Grid>
             </TabItem>
             <!--<TabItem Header="Семейства">

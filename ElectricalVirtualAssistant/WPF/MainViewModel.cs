@@ -106,6 +106,18 @@ namespace EVA_S.WPF
             set { _isLoadFamelesEVAcirc = value; }
         }
 
+        private bool _isStorageInFile;
+        public bool IsStorageInFile
+        {
+            get { return _isStorageInFile; }
+            set { _isStorageInFile = value; }
+        }
+        private bool _isStorageInProject;
+        public bool IsStorageInProject
+        {
+            get { return _isStorageInProject; }
+            set { _isStorageInProject = value; }
+        }
 
         //Конструктор
         public MainViewModel(ParametersNameEntity ent)
@@ -114,11 +126,16 @@ namespace EVA_S.WPF
             Cancel = new RelayCommand(o => CancelCommand(o));
             DefaultValue = new RelayCommand(o => DefaultValueCommand(o));
             LoadDefaultParameters = new RelayCommand(o => LoadDefaultParametersCommand(o));
-            _paramCircName = ent.Param_CircName;
-            _paramCircuitsNames = ent.Param_CircuitsNames;
-            _paramLoadName = ent.Param_LoadName;
-            _paramTextName = ent.Param_TextName;
-            _paramDoubleName = ent.Param_DoubleName;
+            if(ent.StorageInProject)
+            {
+                _paramCircName = ent.Param_CircName;
+                _paramCircuitsNames = ent.Param_CircuitsNames;
+                _paramLoadName = ent.Param_LoadName;
+                _paramTextName = ent.Param_TextName;
+                _paramDoubleName = ent.Param_DoubleName;
+                _isStorageInProject = true;
+            } 
+            else _isStorageInFile = true;
             Ent = ent;
         }
 
@@ -151,7 +168,8 @@ namespace EVA_S.WPF
             Ent.Param_LoadName = ParamLoadName;
             Ent.Param_TextName = ParamTextName;
             Ent.Param_DoubleName = ParamDoubleName;
-
+            Ent.StorageInProject = IsStorageInProject;
+            
             _windowView.DialogResult = true;
             _windowView.Close();
 

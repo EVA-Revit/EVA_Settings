@@ -23,6 +23,10 @@ namespace EVA_S
 
         [FieldAttribute]
         public string Param_DoubleName { get; set; }
+
+        [FieldAttribute]
+        public bool StorageInProject { get; set; }
+
     }
 
 
